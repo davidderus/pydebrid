@@ -23,7 +23,7 @@ setup(
 
     classifiers=[
         'Programming Language :: Python',
-        'Environment :: Console'
+        'Environment :: Console',
         'Development Status :: 4 - Beta',
         'License :: OSI Approved :: Apache Software License',
         'Natural Language :: English',
