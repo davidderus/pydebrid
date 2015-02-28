@@ -1,0 +1,122 @@
+# !/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""
+Main module of pydebrid. One function to rule them all.
+"""
+
+import os
+import sys
+import argparse
+from clint.textui import colored
+from core import Alldebrid, PydConfig, URI, Downloader, Subtitle
+from core import CaptchaException
+import subliminal
+import pyperclip
+
+
+def main():
+    """
+    Handles command line input and output
+    Do Alldebrid instanciation
+    :rtype : None
+    """
+    args = setup_cli()
+
+    alld = Alldebrid()
+    config = PydConfig()
+
+    try:
+        username = config.get('user', 'username')
+        password = config.get_password(username)
+        alld.connect(username, password)
+    except CaptchaException, msg:
+        print colored.red(msg)
+        sys.exit(1)
+    except Exception, msg:
+        print colored.red(msg)
+        config.remove_config()
+
+    if args.i:
+        print alld.get_infos(True)
+        sys.exit()
+
+    if not args.u:
+        print colored.blue('Nothing to do…')
+        sys.exit()
+
+    user_infos = alld.get_infos()
+
+    if user_infos['remaining_days'] < 2:
+        print colored.red('Your account expires in %s' % user_infos['remaining'])
+
+    url_asked = URI(args.u)
+
+    if url_asked.is_url():
+        res = [alld.debrid(url_asked.get_uri())]
+    else:
+        res = []
+        for line in open(url_asked.get_uri()):
+            try:
+                temp_uri = URI(line)
+                tmp = alld.debrid(temp_uri.get_uri())
+            except Exception, msg:
+                print colored.red('Error with %s: %s' % (line.rstrip(), msg))
+            else:
+                res.append(tmp)
+
+    if args.s:
+        # configure the subtitles cache
+        subliminal.cache_region.configure('dogpile.cache.dbm', arguments={'filename': config.get_cache_file()})
+
+    if args.d:
+        nb_files = len(res)
+        for index, link in enumerate(res, start=1):
+            filename = URI(link).get_filename()
+            if nb_files > 1:
+                print colored.blue('--- Downloading %s (%u/%u) ---' % (filename, index, nb_files))
+            output = os.path.join(args.o, filename)
+            print colored.yellow('Outputing at: %s' % output)
+            path = Downloader(alld.get_session()).download(link, output)
+            if args.s and path:
+                print colored.yellow('Downloading subs…')
+                subs = Subtitle(path).set_langs(args.s.split(',')).get()
+                print colored.green('…Subs downloaded!') if len(subs) > 0 else colored.red('…No subs found')
+    else:
+        pyperclip.copy('\r\n'.join(res))
+        links_count = len(res)
+        if links_count == 0:
+            print colored.red('No links debrided')
+        elif links_count == 1:
+            print colored.green('Success, your link has been copied in your clipboard')
+        else:
+            print colored.green('Success, your links have been copied in your clipboard')
+
+
+def setup_cli():
+    """
+    Setup parser options for command-line interface
+    :return:
+    """
+    parser = argparse.ArgumentParser(description="""Using your account on Alldebrid.com,
+                                    this script will help you debrid one link or a list of link.
+                                    By default, it accepts no arguments and asks you your remote file URL.""")
+
+    parser.add_argument('-u', help='Local txt file (like links.txt) or remote url (like http://ul.to/abcde)',
+                        metavar='File/HTTP URL')
+    parser.add_argument('-d', help='Download the linked file(s) once debrided', action='store_true', default=False)
+    parser.add_argument('-i', help='Display current user informations', action='store_true', default=False)
+    parser.add_argument('-s', help='Get subtitles following a single or comma-separated list of IETF language code',
+                        metavar='Subtitles language(s)')
+    parser.add_argument('-o', help='Custom file output directory (otherwise current directory)',
+                        metavar='Destination directory', default=os.getcwd())
+
+    return parser.parse_args()
+
+
+if __name__ in ['__main__', 'pydebrid.main']:
+    try:
+        main()
+    except Exception, msg:
+        print colored.red(msg)
+        sys.exit(1)
