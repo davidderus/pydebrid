@@ -4,7 +4,7 @@ from urlparse import urlparse
 
 import os
 import re
-
+import mimetypes
 
 class URI:
     """
@@ -77,6 +77,14 @@ class URI:
             raise Exception("Can't guess filename")
 
         return filename
+
+    def get_mimetype(self):
+        """
+        Get the mimetype of a file
+        :return: A mimetype or None
+        """
+        mimetype, encoding = mimetypes.guess_type(self.uri)
+        return mimetype
 
     def __str__(self):
         return self.uri
