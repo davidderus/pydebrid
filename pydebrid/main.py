@@ -65,10 +65,6 @@ def main():
             else:
                 res.append(tmp)
 
-    if args.s:
-        # configure the subtitles cache
-        subliminal.cache_region.configure('dogpile.cache.dbm', arguments={'filename': config.get_cache_file()})
-
     if args.d:
         nb_files = len(res)
         for index, link in enumerate(res, start=1):
