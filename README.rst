@@ -25,7 +25,7 @@ Usage
 :code:`pydebrid [-h] [-u File/HTTP URL] [-d] [-i] [-s Subtitles languages] [-o Destination directory]`
 
 * ``-h`` : Display help
-* ``-u`` : Local txt file (like links.txt) or remote url (like http://ul.to/abcde)
+* ``-u`` : Local text/plain file (like links.txt) or remote url (like http://ul.to/abcde)
 * ``-d`` : Download the linked file(s) once debrided
 * ``-i`` : Display current user informations
 * ``-s`` : Get subtitles following a single or comma-separated list of IETF language code
