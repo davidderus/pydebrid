@@ -102,7 +102,7 @@ def setup_cli():
                                     this script will help you debrid one link or a list of link.
                                     By default, it accepts no arguments and asks you your remote file URL.""")
 
-    parser.add_argument('-u', help='Local txt file (like links.txt) or remote url (like http://ul.to/abcde)',
+    parser.add_argument('-u', help='Local text/plain file (like links.txt) or remote url (like http://ul.to/abcde)',
                         metavar='File/HTTP URL')
     parser.add_argument('-d', help='Download the linked file(s) once debrided', action='store_true', default=False)
     parser.add_argument('-i', help='Display current user informations', action='store_true', default=False)
