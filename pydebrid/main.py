@@ -55,6 +55,10 @@ def main():
     if url_asked.is_url():
         res = [alld.debrid(url_asked.get_uri())]
     else:
+        # We only allow the reading of text/plain files and files without a mime (like a file without extension, as Python can't guess that).
+        # It's a basic check, but it's better than nothing.
+        if url_asked.get_mimetype() not in (None, 'text/plain'):
+            raise Exception("Given local file is not readable by pydebrid. Make sure it's a text/plain file.")
         res = []
         for line in open(url_asked.get_uri()):
             try:
