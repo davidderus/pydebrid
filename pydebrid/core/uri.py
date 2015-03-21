@@ -25,7 +25,7 @@ class URI:
             self.file = False
             self.url = True
         else:
-            raise Exception('Invalid type for URI. %s is not a file nor a valid URL' % repr(uri))
+            raise Exception('Invalid type for URI. Given uri is not a file nor a valid URL.')
 
     def is_file(self):
         """
