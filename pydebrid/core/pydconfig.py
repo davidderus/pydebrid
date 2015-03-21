@@ -20,7 +20,6 @@ class PydConfig(ConfigParser.ConfigParser):
     keyring = 'pydebrid'
     config_path = os.path.join(os.path.expanduser('~'), '.pydebrid')
     config_file_path = os.path.join(config_path, 'pydconfig.cfg')
-    cache_file = os.path.join(config_path, 'cache_file.dbm')
 
     def __init__(self):
         ConfigParser.ConfigParser.__init__(self)
@@ -88,9 +87,3 @@ class PydConfig(ConfigParser.ConfigParser):
             self.__delete_password(username)
             print colored.green('Config removed')
         sys.exit()
-
-    def get_cache_file(self):
-        """
-        Returning cache file full path for subliminal
-        """
-        return self.cache_file
