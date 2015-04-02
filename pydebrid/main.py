@@ -114,7 +114,7 @@ def setup_cli():
     return parser.parse_args()
 
 
-if __name__ in ['__main__', 'pydebrid.main']:
+if __name__ == '__main__':
     try:
         main()
     except Exception, msg:
