@@ -19,6 +19,13 @@ Features
 * Intuitive and colorful use
 * Cross-platform (Tested on Linux and OS X but should works on Windows too)
 
+Installation
+============
+pydebrid is available on PyPI. In order to install it, just use the following command :
+
+``pip install pydebrid``
+
+
 Usage
 =====
 
