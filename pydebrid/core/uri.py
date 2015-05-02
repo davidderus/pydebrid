@@ -5,6 +5,7 @@ from urlparse import urlparse
 import os
 import re
 import mimetypes
+import unicodedata
 
 class URI:
     """
@@ -17,7 +18,8 @@ class URI:
         Instantiate a new URI
         :param uri: The URI to work with
         """
-        self.uri = str(uri).strip()
+        temp_uri = unicodedata.normalize('NFKD', unicode(uri)).encode('ASCII', 'ignore')
+        self.uri = str(temp_uri).strip()
         if os.path.isfile(uri):
             self.file = True
             self.url = False
