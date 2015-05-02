@@ -154,7 +154,7 @@ class Alldebrid:
             self.all_infos = clean_infos
             return clean_infos
 
-        class_infos_dict = dict(element.split(' : ') for element in filter(None, class_infos_texts.split('\n')))
+        class_infos_dict = dict(element.split(' : ') for element in filter(None, class_infos_texts.split('\n')) if ' : ' in element)
 
         user_infos = {
             'remaining': exact_remaining,
