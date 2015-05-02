@@ -5,7 +5,7 @@ A global yet simple Alldebrid wrapper
 """
 
 import requests
-from bs4 import BeautifulSoup, Comment
+from bs4 import BeautifulSoup
 import re
 
 
@@ -132,9 +132,11 @@ class Alldebrid:
         :return: A dict containing all user infos
         """
 
-        part_one = self.strip_comments(soup.find(class_='account_infopartone').text)
+        part_one = soup.find(class_='account_infopartone')
+        # Removing email field and associated JS as it's secured (and a useless info)
+        part_one.findAll('li')[2].extract()
 
-        class_infos_one_text = part_one.replace('\t', '').strip()
+        class_infos_one_text = part_one.text.replace('\n\n', '\n').replace('\t', '').strip()
         class_infos_two_text = soup.find(class_='account_infoparttwo').text.replace('\t', '')
         class_infos_texts = class_infos_one_text + class_infos_two_text
 
@@ -168,13 +170,6 @@ class Alldebrid:
         }
 
         return user_infos
-
-    def strip_comments(self, text):
-        """
-        Remove unwanted JS comments
-        :return: The stripped text
-        """
-        return re.sub(r'/\*.*\*/\n', '', text)
 
     def get_session(self):
         """
