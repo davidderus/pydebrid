@@ -13,6 +13,7 @@ from core import Alldebrid, PydConfig, URI, Downloader, Subtitle
 from core import CaptchaException
 import subliminal
 import pyperclip
+import unicodedata
 
 
 def main():
@@ -83,7 +84,8 @@ def main():
                 subs = Subtitle(path).set_langs(args.s.split(',')).get()
                 print colored.green('…Subs downloaded!') if len(subs) > 0 else colored.red('…No subs found')
     else:
-        pyperclip.copy('\r\n'.join(res))
+        links = unicodedata.normalize('NFKD', '\r\n'.join(res)).encode('ASCII', 'ignore')
+        pyperclip.copy(links)
         links_count = len(res)
         if links_count == 0:
             print colored.red('No links debrided')
