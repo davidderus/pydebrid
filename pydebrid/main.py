@@ -116,9 +116,12 @@ def setup_cli():
     return parser.parse_args()
 
 
-if __name__ == '__main__':
+def launcher():
     try:
         main()
     except Exception, msg:
         print colored.red(msg)
         sys.exit(1)
+
+if __name__ == '__main__':
+    launcher()

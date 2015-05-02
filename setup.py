@@ -36,7 +36,7 @@ setup(
 
     entry_points={
         'console_scripts': [
-            'pydebrid = pydebrid.main:main',
+            'pydebrid = pydebrid.main:launcher',
         ],
     }
 )
