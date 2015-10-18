@@ -16,7 +16,7 @@ class Subtitle:
         # scan for videos in the folder and their subtitles
         video = subliminal.scan_video(self.filepath)
         # download best subtitles
-        return subliminal.download_best_subtitles(set([video]), self.langs)
+        return subliminal.download_best_subtitles([video], self.langs)
 
     def get_langs(self):
         return self.langs
