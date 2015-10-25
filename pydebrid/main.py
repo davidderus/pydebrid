@@ -112,6 +112,7 @@ def setup_cli():
                         metavar='Subtitles language(s)')
     parser.add_argument('-o', help='Custom file output directory (otherwise current directory)',
                         metavar='Destination directory', default=os.getcwd())
+    parser.add_argument('--stdout', help='Output links to STDOUT instead of clipboard', action='store_true', default=False)
 
     return parser.parse_args()
 
