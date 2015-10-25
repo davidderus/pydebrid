@@ -11,7 +11,7 @@ Features
 * Bulk unleashing (from txt file)
 * Embed downloader
 * Multi-languages subtitles getter
-* Clipboard support by default
+* Clipboard or STDOUT output
 * Account information and expiration alert
 * Secure config storage
 * SSL Support
