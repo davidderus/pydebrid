@@ -11,7 +11,6 @@ import argparse
 from clint.textui import colored
 from core import Alldebrid, PydConfig, URI, Downloader, Subtitle
 from core import CaptchaException
-import subliminal
 import pyperclip
 import unicodedata
 
