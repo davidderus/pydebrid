@@ -54,10 +54,15 @@ Unrestrain all links in ``links.txt`` file (one link per line) and put them in t
 Return infos from your account like Fidelity points, Remaining time, Registration date and more.
 
 Changelog
-========
+=========
 
 From 1.0.4 to 1.0.6:
 
 - New requests version
 - New subliminal version
-- Output to STDOUT
+- Output to STDOUT (Issue #1)
+
+Future
+======
+
+- Resuming download on failure (Issue #2)
