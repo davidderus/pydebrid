@@ -85,15 +85,27 @@ def main():
                 print colored.green('…Subs downloaded!') if len(subs) > 0 else colored.red('…No subs found')
     else:
         links = unicodedata.normalize('NFKD', '\r\n'.join(res)).encode('ASCII', 'ignore')
-        pyperclip.copy(links)
         links_count = len(res)
-        if links_count == 0:
-            print colored.red('No links debrided')
-        elif links_count == 1:
-            print colored.green('Success, your link has been copied in your clipboard')
+        if args.stdout:
+            print links_to_stdout(links, links_count)
         else:
-            print colored.green('Success, your links have been copied in your clipboard')
+            print links_to_clipboard(links, links_count)
 
+def links_to_clipboard(links, links_count):
+    pyperclip.copy(links)
+    if links_count == 0:
+        return colored.red('No links debrided')
+    elif links_count == 1:
+        return colored.green('Success, your link has been copied in your clipboard')
+    else:
+        return colored.green('Success, your links have been copied in your clipboard')
+
+def links_to_stdout(links, links_count):
+    if links_count == 0:
+        return colored.red('No links debrided')
+    else:
+        return links
+    sys.exit(0)
 
 def setup_cli():
     """
