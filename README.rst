@@ -29,7 +29,7 @@ pydebrid is available on PyPI. In order to install it, just use the following co
 Usage
 =====
 
-:code:`pydebrid [-h] [-u File/HTTP URL] [-d] [-i] [-s Subtitles languages] [-o Destination directory]`
+:code:`pydebrid [-h] [-u File/HTTP URL] [-d] [-i] [-s Subtitles languages] [-o Destination directory] [--stdout]`
 
 * ``-h`` : Display help
 * ``-u`` : Local text/plain file (like links.txt) or remote url (like http://ul.to/abcde)
@@ -37,6 +37,7 @@ Usage
 * ``-i`` : Display current user informations
 * ``-s`` : Get subtitles following a single or comma-separated list of IETF language code
 * ``-o`` : Custom file output directory (otherwise current directory)
+* ``--stdout`` : Output links to STDOUT instead of clipboard
 
 Examples
 ========
