@@ -14,12 +14,13 @@ class Alldebrid:
     Alldebrid class, allowing interaction with their API
     """
 
+    ALLDEBRID_ROOT = 'https://alldebrid.com'
+
     # Website links
     infos = {
-        'root': 'https://www.alldebrid.com',
-        'login': 'https://www.alldebrid.com/register/',
-        'infos': 'https://www.alldebrid.com/account/',
-        'rapidDebrid': 'https://www.alldebrid.com/service.php',
+        'login': ALLDEBRID_ROOT + '/register/',
+        'infos': ALLDEBRID_ROOT + '/account/',
+        'rapidDebrid': ALLDEBRID_ROOT + '/service.php',
         'ua': """Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_2_1 like Mac OS X; en-us) AppleWebKit/533.17.9
             (KHTML, like Gecko) Version/5.0.2 Mobile/8C148 Safari/6533.18.5"""
     }

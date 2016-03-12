@@ -57,6 +57,10 @@ Return infos from your account like Fidelity points, Remaining time, Registratio
 Changelog
 =========
 
+From 1.0.6 to 1.0.7:
+
+- Updating root URL for Alldebrid website
+
 From 1.0.4 to 1.0.6:
 
 - New requests version
