@@ -18,7 +18,6 @@ class Alldebrid:
 
     # Website links
     infos = {
-        'root': ALLDEBRID_ROOT,
         'login': ALLDEBRID_ROOT + '/register/',
         'infos': ALLDEBRID_ROOT + '/account/',
         'rapidDebrid': ALLDEBRID_ROOT + '/service.php',
