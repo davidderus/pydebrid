@@ -17,7 +17,7 @@ setup(
     description='A cross-platform Alldebrid CLI with downloader and subtitles finder',
     long_description=open('README.rst').read(),
 
-    install_requires=['subliminal>=1.1.1,<2', 'guessit<=1.9', 'lxml', 'clint', 'pyperclip', 'keyring', 'requests', 'beautifulsoup4'],
+    install_requires=['subliminal>=1.1.1,<2', 'guessit<=1.9', 'lxml', 'clint', 'pyperclip', 'keyring', 'keyrings.alt', 'requests', 'beautifulsoup4'],
 
     url='https://github.com/davidderus/pydebrid',
 
