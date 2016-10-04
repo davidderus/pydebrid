@@ -21,8 +21,7 @@ class Alldebrid:
         'login': ALLDEBRID_ROOT + '/register/',
         'infos': ALLDEBRID_ROOT + '/account/',
         'rapidDebrid': ALLDEBRID_ROOT + '/service.php',
-        'ua': """Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_2_1 like Mac OS X; en-us) AppleWebKit/533.17.9
-            (KHTML, like Gecko) Version/5.0.2 Mobile/8C148 Safari/6533.18.5"""
+        'ua': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36'
     }
 
     def __init__(self):
