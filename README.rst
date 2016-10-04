@@ -57,6 +57,10 @@ Return infos from your account like Fidelity points, Remaining time, Registratio
 Changelog
 =========
 
+From 1.0.8 to 1.0.9:
+
+- Bugfix (see https://github.com/davidderus/pydebrid/issues/6)
+
 From 1.0.6 to 1.0.7:
 
 - Updating root URL for Alldebrid website
