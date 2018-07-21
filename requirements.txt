@@ -21,6 +21,6 @@ pysrt==1.1.1
 python-dateutil==2.7.3
 requests==2.19.1
 six==1.11.0
-stevedore==1.29.0
+stevedore==1.19.1
 subliminal==1.1.1
 urllib3==1.23
