@@ -41,7 +41,7 @@ class Alldebrid:
         # Current params used for connection
         connect_params = {
             'action': 'login',
-            'returnpage': '/account/',
+            'returnpage': 'account/',
             'login_login': username,
             'login_password': password
         }
