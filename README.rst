@@ -4,6 +4,16 @@ pydebrid
 
 A simple & cross-platform command-line interface for unrestraining links thanks to Alldebrid.
 
+Disclaimer
+==========
+
+From now on, Christopher_ is the only "debrider" project I will maintain.
+
+Feel free to fork pydebrid if you want, but understand that Christopher does
+the same job than pydebrid and a lot more.
+
+.. _Christopher: https://github.com/davidderus/christopher
+
 Features
 ========
 
