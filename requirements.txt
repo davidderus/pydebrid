@@ -22,4 +22,4 @@ requests==2.19.1
 six==1.11.0
 stevedore==1.19.1
 subliminal==1.1.1
-urllib3==1.23
+urllib3==1.24.2
